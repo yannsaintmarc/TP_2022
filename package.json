@@ -1,0 +1,16 @@
+{
+  "name": "myworkshop",
+  "version": "1.0.0",
+  "description": "a workplace for artists",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Yann Saint-Marc",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
+}
