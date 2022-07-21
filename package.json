@@ -20,5 +20,15 @@
     "pg-hstore": "^2.3.4",
     "pg-promise": "^10.11.1",
     "sequelize": "^6.21.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yannsaintmarc/TP_2022_workshop.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/yannsaintmarc/TP_2022_workshop/issues"
+  },
+  "homepage": "https://github.com/yannsaintmarc/TP_2022_workshop#readme"
 }
