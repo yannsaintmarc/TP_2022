@@ -13,7 +13,7 @@ app.use(router);
 app.use(express.static('/public'));
 //app.use(session);
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log('Server running on :', process.env.PORT);
 });
 
