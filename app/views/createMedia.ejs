@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+
+<div>
+    <h1 class="title">créer un media</h1>
+</div>
+<div>
+    <form action="" method="POST" class="createMedia">
+        <label for="titleTheme">Titre de votre media</label>
+        <input type="text" name="titleMedia" id="titleMedia" required>
+        <p><!-- TODO: texte --></p>
+        <label for="introducing">Présentation</label>
+        <textarea name="introducing"><!-- insert text here --></textarea>
+        <label for="addAuthor">Auteur</label>
+        <input type="button" name="addAuthor" id="addAuthor" >
+        <label for="Material">Matériaux</label>
+        <input type="text" name="addMaterial" id="addMaterial" ><!-- TODO une liste déroulante-->
+        <label for="Size">Dimensions</label>
+        <input type="number" name="addSize" id="addSize" >
+        <label for="weight">Poids</label>
+        <input type="number" name="addWeight" id="addWeight" >
+        <label for="image">Image</label>
+        <input type="file" name="addFile" id="addFile" >
+        <label for="Ressource">Ressource</label>
+        <input type="url" name="addRessource" id="addRessource" >
+        <button class="bouton validate" type="submit" value="formValidate">valider</button>
+    </form>
+</div>
+
+<%- include('partials/footer') %>

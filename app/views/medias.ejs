@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+<div>
+    <h1 class="title"><%${titleMedia}</h1>
+    <h2 class="">présentation</h2>
+    <p><!-- article --></p>
+</div>
+<div>
+    <img src="" alt="">
+</div>
+<div>
+    <ul>
+        <li>
+            date de création:<%${creationDate}%>
+        </li>
+        <li>
+            type:<%${mediaType}%>
+        </li>
+        <li>
+            matériaux:<%${mediaMaterials}%>
+        </li>
+        <li>
+            Dimensions:<%${size}%>
+        </li><li>
+            Ressouces:<%${ressource_id}%>
+        </li>
+    </ul>
+</div>
+<div class="isLogged">
+    <Form action="" method="post" class="createMedia">
+        <label for="deleteMedia">Supprimer le média</label>
+        <input type="button" name="deleteMedia" id="deleteMedia" >
+        <label for="addRessource">ajouter une ressource</label>
+        <input type="url" name="addRessource" id="addRessource" >
+        <button class="bouton validate" type="submit" value="formValidate">valider</button>
+    </Form>
+</div>
+
+<%- include('partials/footer') %>

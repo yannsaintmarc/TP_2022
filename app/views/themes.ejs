@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<div>
+    <H1 class="title"><%${titleTheme}%></H1>
+    <H2 class="title">créé par<%${userName}</H2>
+</div>
+<div>
+    <H3 clas="title">médias enregistrés</H3>
+    <div>
+        <%${cardMedia}%>
+    </div>
+    <div>
+        <p>créé le <%${creationDate}</p>
+    </div>
+    <div class="islogged">
+        <p>ajouter un média</p><button class="button" type="submit" value="addMedia">
+        <p>supprimer un média</p><button class="button" type="submit" value="deleteMedia">
+    </div>
+</div>
+
+<%- include('partials/footer') %>

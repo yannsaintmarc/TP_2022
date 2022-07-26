@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+
+<div>
+    <h1 class="title">créer mon workspace</h1>
+</div>
+<div>
+    <form action="" method="POST" class="signup">
+        <label for="titleWorkspace">titre de votre workspace</label>
+        <input type="text" name="titleWorspace" id="titleWorkspace" required>
+        <p><!-- TODO: texte --></p>
+        <label for="introducing">présentation</label>
+        <textarea name="introducing"><!-- insert text here --></textarea>
+        <button class="button validate" type="button">valider</button>
+        <input type="checkbox" name="privateMode" id="privateMode" >
+        <input type="checkbox" name="shareMode" id="shareMode" >
+
+    </form>
+</div>
+
+<%- include('partials/footer') %>

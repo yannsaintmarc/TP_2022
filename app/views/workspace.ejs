@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+
+<div>
+    <H1 class="title"><%${titleWorkspace}%></H1>
+    <H2 class="title">créé par<%${userName}</H2>
+</div>
+<div>
+    <H3 class="title">thèmes enregistrés</H3>
+    <div>
+        <%${cardTheme}%>
+    </div>
+    <div>
+        <p>créé le <%${creationDate}</p>
+    </div>
+    <div class="islogged">
+        <p>ajouter un thème</p><button class="button" type="submit" value="addTheme">
+        <p>supprimer un thème</p><button class="button" type="submit" value="deleteTheme">
+    </div>
+</div>
+<%- include('partials/footer') %>

@@ -10,22 +10,22 @@ const Ressources = require('./ressources');
 
 Users.hasMany(Workspace, {
     foreignKey: 'user_id',
-    as: 'creator'
+    as: 'user'
 });
 
 Users.hasMany(Themes, {
 foreignKey: 'user_id',
-as: 'creator'
+as: 'user'
 });
 
 Users.hasMany(Medias, {
     foreignKey: 'user_id',
-    as: 'creator'
+    as: 'user'
 });
 
 Workspace.belonTo(User, {
         foreignKey: 'workspace_id',
-        as: 'creator'
+        as: 'user'
 });
 
 Workspace.hasMany(Themes, {
@@ -42,6 +42,16 @@ Themes.hasMany(Medias, {
     foreignKey: 'medias_id',
     as: 'medias'
 });
+
+Medias.belongTo(Themes, {
+    foreignKey: 'themes_id',
+    as: 'themes'
+});
+
+Medias.hasMany(Ressources, {
+    foreignKey: 'ressources_id',
+    as: 'ressources'
+})
 
 Ressources.belongTo(Medias, {
     foreignKey: 'medias_id',

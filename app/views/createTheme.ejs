@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+
+<div>
+    <h1 class="title">créer un thème</h1>
+</div>
+<div>
+    <form action="" method="POST" class="createTheme">
+        <label for="titleTheme">titre de votre thème</label>
+        <input type="text" name="titleTheme" id="titleTheme" required>
+        <p><!-- TODO: texte --></p>
+        <label for="introducing">présentation</label>
+        <textarea name="introducing"><!-- insert text here --></textarea>
+        <label for="addMedia">ajouter un média</label>
+        <input type="button" name="addMedia" id="addMedia" >
+        <label for="addRessource">ajouter une ressource</label>
+        <input type="url" name="addRessource" id="addRessource" >
+        <label for="addSocialMedia">ajouter un réseau social</label>
+        <input type="url" name="addSocialMedia" id="addSocialMedia" >
+        <button class="bouton validate" type="submit" value="formValidate">valider</button>
+    </form>
+</div>
+
+<%- include('partials/footer') %>

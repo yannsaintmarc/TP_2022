@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+<div>
+    <H1 class="title">user profile</H1>
+    <img class="user_picture" src="" alt="avatar de l'utilisateur">
+</div>
+<div>
+    <h3>nom:<%${lastname}%></h3>
+    <h3>prenom:<%${firstname}%></h3>
+    <ul>
+        <li>
+            coordonnées:<%${adress}%>
+        </li>
+        <li>
+            telephone:<%${phone}%>
+        </li>
+        <li>
+            messagerie:<%${email}%>
+        </li>
+    </ul>
+</div>
+<div>
+    <!-- TODO: insérer logo medias sociaux choisis à l'enregistrement-->
+</div>
+<div>
+    <h3><%${titleWorkspace}</h3>
+    <p>créé le <%${creationDate}%></p>
+</div>
+<div class="isLogged">
+    <p>ajouter un espace de travail</p><button class="button" type="submit" value="addWorkspace">
+    <p>supprimer son compte</p><button class="button" type="submit" value="deleteUser">
+</div>
+</div>
+
+
+<%- include('partials/footer') %>

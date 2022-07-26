@@ -2,7 +2,7 @@
 require('dotenv').config();
 const express = require ('express');
 //const cors = require('cors');
-const session =require ('express-session');
+//const session =require ('express-session');
 const router = require('./app/router');
 
 const app = express();
@@ -18,11 +18,11 @@ app.set('views', './app/views');
 app.use(express.static('./app/public'));
 
 /** sessions */
-app.use(session({
+//app.use(session({
     //password
     //save newSession
     //resave session
-}));
+//}));
 
 //** routing */
 app.use(router);
