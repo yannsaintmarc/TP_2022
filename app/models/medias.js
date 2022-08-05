@@ -1,18 +1,29 @@
-const sequelize = require();
-const {} = require('sequelize');
+const sequelize = require('../data/database');
+const { DataTypes, Model } = require('sequelize');
 
 class Medias extends Model {
-    //TODO
+    //afficher les médias en détail
+    getlMedia () {
+        return `${this.titlemedia}
+                ${this.theme_presentation}
+                ${this,day}
+                ${this.image}
+                ${this.type}
+                ${this.material}
+                ${this.size}
+                ${this.weigth}
+                ${this.ressources}`;
+        }
     };
     
     Medias.init (
         {
-            author: DataTypes.STRING,
-            date: DataTypes.TIMESTAMP,
-            type: DataTypes.STRING,
-            material: DataTypes.STRING,
-            size: DataTypes.NUMBER,
-            weigth: DataTypes.NUMBER
+            author: DataTypes.TEXT,
+            day: DataTypes.TIMESTAMPZ,
+            type: DataTypes.TEXT,
+            material: DataTypes.TEXT,
+            size: DataTypes.INTEGER,
+            weigth: DataTypes.INTEGER
         },
         {
             sequelize,

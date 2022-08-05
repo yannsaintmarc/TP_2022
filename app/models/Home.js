@@ -1,32 +1,23 @@
 /** import models */
 
-const Users= require('./users');
+const Creator= require('./creator');
 const Workspace = require('./workspace');
 const Themes = require('./themes');
-const Medias = required('./medias')
+const Medias = require('./medias');
 const Ressources = require('./ressources');
 
 /** relations */
+
 // un utilisateur peut avoir plusieurs espaces de travail
-Users.hasMany(Workspace, {
-    foreignKey: 'user_id',
-    as: 'user'
+Creator.hasMany(Workspace, {
+    foreignKey: 'creator_id',
+    as: 'creator'
 });
 
-/** Users.hasMany(Themes, {
-foreignKey: 'user_id',
-as: 'user'
-}); 
-
-Users.hasMany(Medias, {
-    foreignKey: 'user_id',
-    as: 'user'
-}); */
-
 // un espace de travail n'a qu'un seul utilisateur
-Workspace.belongTo(User, {
-        foreignKey: 'user_id',
-        as: 'user'
+Workspace.belongTo(Creator, {
+        foreignKey: 'creator_id',
+        as: 'creator'
 });
 
 // un espace de travail n'a plusieurs themes
@@ -71,16 +62,9 @@ Ressources.belongToMany(Medias, {
     as: 'ressources'
 });
 
-/** table d'association
-const containTheme = sequelize.define('containtheme', {
-}, {
-// TODO
-}) */
-
-
 
 module.exports = {
-Users,
+Creator,
 Workspace,
 Themes,
 Medias,

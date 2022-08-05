@@ -1,23 +1,26 @@
-const { themes } = require('./models');
+const { Themes } = require('../models/themes');
+const { Errors } = require('../models/error');
 
 
 const mainController = {
    home: async (req,res) => {
        try{
-           const searchThemesForm = themes.findById({
+           const searchThemesForm = searchThemesForm.findById(
+            {
                  include: ["titleTheme"]
-           });
+            }
+        );
 
-           res.render('home', {searchThemesForm});
+           res.render('home', {data: Themes});
 
     } catch (error) {
 console.logerror(error);
-res.status(500).send(error);/** à revoir : penser à faire une view !!! */
+res.status(500).send(error);
+        }
     }
-}
 };
 
-notFound: (req, res) => {
+{ Errors } (_req, res) => {
     res.status(404).render('404');
 };
 

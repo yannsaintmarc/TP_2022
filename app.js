@@ -1,33 +1,28 @@
-
 require('dotenv').config();
-const express = require ('express');
-//const cors = require('cors');
-//const session =require ('express-session');
-const router = require('./app/router/router');
 
+/** serveur */
+const express = require ('express');
+
+/** router */
+const router = require ('./app/routers/router');
+
+/** create express serveur */
 const app = express();
 
-app.use(express.json());
-//app.use(cors('*'));
-
-/** views engine */
-app.set('view engine', 'ejs');
-app.set('views', './app/views');
-
-/** statics files */
-app.use(express.static('./app/public'));
+/** connexion client */
+const client = require('../data/database');
 
 /** sessions */
-//app.use(session({
-    //password
-    //save newSession
-    //resave session
-//}));
+const session = require ('express-session');
 
-//** routing */
+app.use(express.json());
 app.use(router);
 
+/** view engine */
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+/** PORT listening */
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server running on :', process.env.PORT);
 });
-

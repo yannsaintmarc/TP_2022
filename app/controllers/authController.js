@@ -1,13 +1,13 @@
 const bcrypt = require('bcrypt');
 //const emailValidator = require('email-validator');
 
-const { User } = require ('./models');
+const { Creator } = require ('../models/creator');
 
 const authController = {
     
 /** affichage du formulaire d'inscription - signup form rendering */
 
-    showSignupForm: (req, res) => {
+    showSignupForm: (_req, res) => {
         res.render('signup');
     },
 /** soumission du formulaire - sending signup form */
@@ -79,35 +79,35 @@ const authController = {
 } else {
 /** verify existing user */
 
-    const existingUser = await User.findOne({
+    const existingUser = await Creator.findOne({
         where: {
             email: req.body.email
         }
     });
 
     if (existingUser) {
-        res.render('signup', {errors : ["erreur lors de la création!"]});
+        res.render('signup', { errors : ["erreur lors de la création!"]});
     } else {
 
 /** if ok, create new user with encrrypt password with bcrypt */
 
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
 
- /** create newUser and save into databse */
+ /** create new Creator and save into database */
 
-        const newUser = new User({
+        const newCreator = new Creator({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             adress: req.body.adress,
             town: req.body.town,
             zipCode: req.body.zipCode,
-            mail: req.SocialMedia,
+            mail: req.body.SocialMedia,
             phone: req.body.phone,
             sociaMedia: req.body.sociaMedia,
             userName: req.body.userName,
             password: req.body.password
         });
-        await newUser.save();
+        await newCreator.save();
         res.redirect('/');
 
             }
@@ -121,14 +121,14 @@ const authController = {
     },
 /** Login form rendering */
 
-    showLoginForm: (req, res) => {
+    showLoginForm: (_req, res) => {
         res.render('login');
     },
 /** sending login form */
 
     handleLoginForm: async (req, res) => {
         try {
-            const existingUser = await User.findOne({
+            const existingUser = await Creator.findOne({
                 where: {
                     email: req.body.email
                 }
@@ -140,7 +140,7 @@ const authController = {
                 if (!validPassword) {
                     res.render('login');
                 } else {
-                    req.session.user = existingUser;
+                    req.session.creator = existingUser;
                     res.redirect('/');
                 }
             }

@@ -1,14 +1,23 @@
-const sequelize = require();
-const {DataTypes, Model} = require('sequelize');
+const sequelize = require('../data/database');
+const { DataTypes, Model } = require('sequelize');
 class Themes extends Model {
-    //TODO
+ // on affiche le titre de theme, la date, un présentattion et un image   
+getTheme () {
+    return `${this.titleTheme}
+            ${this.day}
+            ${this.image}
+            ${this.theme_presentation}`;
+}
     };
+
+
     
     Themes.init (
         {
-            title: DataTypes.STRING,
-            date: DataTypes.TIMESTAMP,
-            owner: DataTypes.STRING
+            titleTheme: DataTypes.TEXT,
+            day: DataTypes.TIMESTAMPZ,
+            image: DataTypes.TEXT,
+            theme_presentation: DataTypes.TEXT
         },
         {
             sequelize,

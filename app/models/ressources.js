@@ -1,15 +1,20 @@
-const sequelize = require();
-const {} = require('sequelize');
+const sequelize = require('../data/database');
+const {DataTypes, Model} = require('sequelize');
 
 class Ressources extends Model {
-    //TODO
-    };
+    //on affiche les ressources 
+    getAllRessources () {
+        return `${this.titleResources}
+                ${this.day}
+                ${this.link}`;
+            }
+        };
     
     Ressources.init (
         {
-            title: DataTypes.STRING,
-            date: DataTypes.TIMESTAMP,
-            link: DataTypes.STRING
+            titleRessources: DataTypes.TEXT,
+            day: DataTypes.TIMESTAMPZ,
+            link: DataTypes.TEXT
         },
         {
             sequelize,

@@ -1,0 +1,27 @@
+.body {
+    background-color:antiquewhite;  
+}
+
+.title {
+    color: brown;
+}
+
+.text {
+    color: brown;
+}
+
+.search-form {
+    background-color: darkgrey;
+}
+
+.navigation {
+    background-color: darkgoldenrod;
+}
+
+.button {
+    background-color: darkgoldenrod;
+}
+
+.form-label {
+    color: brown;
+}
