@@ -1,6 +1,6 @@
-require('dotenv').config();
+/**require('dotenv').config();
 
-const {Client} = require ('pg');
+const { Client } = require ("pg");
 const client= new Client;
 
 new Client(
@@ -10,6 +10,7 @@ new Client(
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME
     }
+    process.env.PG_URL
 );
 client.connect((error) => {
         if(error) {
@@ -20,4 +21,13 @@ client.connect((error) => {
     }
 );
 
-module.exports = client;
+module.exports = client;*/
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize(process.env.PG_URL, {
+    define: {
+        underscored: true,
+    }
+});
+
+module.exports = sequelize;

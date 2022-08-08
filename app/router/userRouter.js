@@ -6,7 +6,10 @@ const userController = require('../controllers/userController');
 
 const router = express.Router();
 
-// routes GET POST PATCH DELETE
+// routes:
+//GET
+router.get('/', userController.getUserProfile);
+//POST //PATCH //DELETE
 
 // export 
 module.exports = router;

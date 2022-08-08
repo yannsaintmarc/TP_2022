@@ -1,8 +1,8 @@
-const { Medias } = require('../models/medias');
-const { Errors } = require('../models/error');
+const { Medias } = require('../models/media');
+const { Errors } = require('../middlewares/errorMiddleware');
 
-const mediaController= {
-    medias: async (req,res) => {
+module.exports = {
+    async getOneMedia(req,res) {
         try{
             const cardMedia = await cardMedia.findByPk(
             {
@@ -22,7 +22,7 @@ const mediaController= {
 
         );
  
-            res.json({ data: medias });
+            res.json({ data: Medias });
  
      } catch (error) {
  console.logerror(error);
@@ -34,5 +34,3 @@ const mediaController= {
  { Errors } (req, res) => {
      res.status(404).json('404');
  };
-
-module.exports = mediaController;

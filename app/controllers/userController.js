@@ -1,10 +1,10 @@
 const { Users } = require('../models');
-//const { Errors } = require('../models/error');
+const { Errors } = require('../middlewares/errorMiddleware');
 
 module.exports = {
     async getUserProfile(req,res) {
         try {
-            const UserProfile = await Users.findOne(
+            const getUserProfile = await getUserProfile.findOne(
             {
                   include:
                 [
@@ -16,13 +16,14 @@ module.exports = {
                 'zipcode',
                 'email',
                 'phone',
+                'creation_date',
                 'socialNetwork'
                 ]
             }
 
         );
  
-            res.json({data: users});
+            res.json({data: Users});
  
      } catch (error) {
  console.logerror(error);
@@ -31,6 +32,6 @@ module.exports = {
  }
  };
  
- /**{ Errors } (req, res) => {
+{ Errors } (req, res) => {
      res.status(404).json('404');
- };*/
+ };

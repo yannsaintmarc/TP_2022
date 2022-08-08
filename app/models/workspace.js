@@ -1,4 +1,4 @@
-const sequelize = require('../data/database');
+const sequelize = require('../database');
 const {DataTypes, Model} = require('sequelize');
 
 class Workspace extends Model {};
@@ -6,7 +6,7 @@ class Workspace extends Model {};
 Workspace.init (
     {
         titleWorkspace: DataTypes.TEXT,
-        day: DataTypes.TIMESTAMPZ,
+        day: DataTypes.DATE,
         owner: DataTypes.TEXT,
         workspace_presentation: DataTypes.TEXT
     },

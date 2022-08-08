@@ -1,4 +1,4 @@
-const sequelize = require('../data/database');
+const sequelize = require('../database');
 const {DataTypes, Model} = require('sequelize');
 
 class Ressources extends Model { };
@@ -6,7 +6,7 @@ class Ressources extends Model { };
     Ressources.init (
         {
             titleRessources: DataTypes.TEXT,
-            day: DataTypes.TIMESTAMPZ,
+            day: DataTypes.DATE,
             link: DataTypes.TEXT
         },
         {

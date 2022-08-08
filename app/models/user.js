@@ -1,11 +1,10 @@
-const sequelize = require('../data/database');
-const {DataTypes, Model} = require('sequelize');
+const sequelize = require('../database');
+const { DataTypes, Model } = require('sequelize');
 
-class Users extends Model { };
+class User extends Model {}
 
-Users.init(
+User.init( 
     {
-        password : DataTypes.TEXT,
         firstname: DataTypes.TEXT,
         lastname: DataTypes.TEXT,
         adress: DataTypes.TEXT,
@@ -13,7 +12,7 @@ Users.init(
         zipcode: DataTypes.INTEGER,
         email: {type: DataTypes.STRING, validate: {isEmail: true}},
         phone: DataTypes.INTEGER,
-        creationDate: DataTypes.TIMESTAMPZ,
+        creation_date: DataTypes.DATE,
         socialNetwork: DataTypes.TEXT,
         username: DataTypes.TEXT,
         password: DataTypes.TEXT
@@ -24,4 +23,4 @@ Users.init(
     }
 );
 
-module.exports = Users;
+module.exports = User;

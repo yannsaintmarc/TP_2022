@@ -1,4 +1,4 @@
-const sequelize = require('../data/database');
+const sequelize = require('../database');
 const { DataTypes, Model } = require('sequelize');
 
 class Medias extends Model { };
@@ -6,7 +6,7 @@ class Medias extends Model { };
     Medias.init (
         {
             author: DataTypes.TEXT,
-            day: DataTypes.TIMESTAMPZ,
+            day: DataTypes.DATE,
             type: DataTypes.TEXT,
             material: DataTypes.TEXT,
             size: DataTypes.INTEGER,

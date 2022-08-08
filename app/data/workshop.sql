@@ -111,5 +111,9 @@ CREATE TABLE IF NOT EXISTS "containmedia" (
   "titlemedia" INT NOT NULL REFERENCES "media" ("id")
 );
 
+-- ----------------------------------------------------------------------------
+-- tables d'association
+-- 
+
 -- -----------------------------------------------------------------------------
 COMMIT;

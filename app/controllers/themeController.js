@@ -1,6 +1,6 @@
 // on veut afficher une liste de médias avec un titre une date, et une image
-const { Medias } = require('../models/medias');
-const { Errors } = require('../models/error');
+const { Medias } = require('../models/media');
+const { Errors } = require('../middlewares/errorMiddleware');
 
 const themeController = {
     theme: async (req,res,next) => {
