@@ -18,9 +18,9 @@
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "pg-promise": "^10.11.1",
-    "sequelize": "^6.21.3"
+    "sequelize": "^6.21.3",
+    "xss": "^1.0.13"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yannsaintmarc/TP_2022_workshop.git"

@@ -17,8 +17,8 @@ const router = express.Router();
 
 // security middleware
 
-/**router.use(secuMidlleware.corsMiddleware);
-router.use(secuMidlleware.xssMiddleware);*/
+router.use(secuMiddleware.corsMiddleware);
+router.use(secuMiddleware.xssMiddleware);
 
 // prefix urls
 
@@ -28,6 +28,9 @@ router.use('/theme', themeRouter);
 router.use('/media', mediaRouter);
 router.use('/ressources', ressourcesRouter);
 
+// activate errorMiddleware
+
+router.use(errorMiddleware.errorMiddleware);
 
 
 module.exports = router;

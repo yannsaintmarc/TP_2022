@@ -1,10 +1,11 @@
-const { Users } = require('../models');
-const { Errors } = require('../middlewares/errorMiddleware');
+const { User } = require('../models');
+
 
 module.exports = {
-    async getUserProfile(req,res) {
+    async userProfile(req,res) {
         try {
-            const getUserProfile = await getUserProfile.findOne(
+            const getUserProfile = await User.findByPk(
+
             {
                   include:
                 [
@@ -23,15 +24,110 @@ module.exports = {
 
         );
  
-            res.json({data: Users});
+            res.json({ data: getUserProfile });
  
      } catch (error) {
- console.logerror(error);
- res.status(500).send(error);
+        console.error(error);
      }
- }
- };
- 
-{ Errors } (req, res) => {
-     res.status(404).json('404');
- };
+    },
+
+    async createUser(req,res) {
+        try {
+
+        // verify if existing user in database
+
+            const existingUser = await User.findOne({
+                where: {
+                    email: req.body.email
+                }
+            });
+        // if user already exist : error
+            if (existingUser) {
+                res.json({Error})
+            } else {
+    //const hashedPassword = bcrypt.hashSync(req.body.password, 10);// TODO : terminer cette partie !!! 
+            }
+
+            const newUserProfile = new User (
+                {
+                    firstname: req.body.firstnamme,
+                    lastname: req.body.lastname,
+                    avatar: req.body.avatar,
+                    adresse: req.body.adresse,
+                    town: req.body.town,
+                    zipcode: req.body.town,
+                    email: req.body.email,
+                    password: hashedPassword,
+                    phone:req.body.phone,
+                    socialNetwork: req.body.socialNetwork
+                }
+            );
+
+        await newUserProfile.save();  
+                res.redirect('/');
+
+        res.json({ data: newUserProfile });
+
+            } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
+            }
+    },
+        
+    async updateUser(req,res) {
+        try {
+            const updatedUser = req.body;
+
+            if (updatedUser.firstname) {
+                User.firstname = updatedUser.firstname;
+            }
+            if (updatedUser.lastname) {
+                User.lastname = updatedUser.lastname;
+            }
+            if (updatedUser.avatar) {
+                User.avatar = updatedUser.avatar;
+            }
+            if (updatedUser.adresse) {
+                User.adresse = updatedUser.adresse;
+            }
+            if (updatedUser.town) {
+                User.town = updatedUser.town;
+            }
+            if (updatedUser.adresse) {
+                User.zipcode = updatedUser.adresse;
+            }
+            if (updatedUser.adresse) {
+                User.email = updatedUser.email;
+            }
+            if (updatedUser.adresse) {
+                User.password = updatedUser.password;
+            }
+            if (updatedUser.adresse) {
+                User.phone = updatedUser.phone;
+            }
+            if (updatedUser.adresse) {
+                User.socialNetwork = updatedUser.socialNetwork;
+            }
+            await User.save();
+
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
+        }
+    },
+
+    async deleteUser (req,res) {
+        const UserId = req.params.id;
+        try {
+            const Users = await User.findByPk(UserId);
+            if (!Users) {
+                res.status(404).json({
+                    error: " bad news : we didn't found user profile "
+                });
+            }
+        } catch (error) {
+        console.error(error);
+            res.status(500).send(error);
+        }
+    }
+};

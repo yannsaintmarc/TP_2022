@@ -2,10 +2,11 @@
 
 BEGIN;
 
-DROP TABLE IF EXISTS "theme", "containtheme", "workspace", "containressources", "containmedia", "creator", "ressources", "media";
+DROP TABLE IF EXISTS "theme", "containtheme", "workspace", "containressources", "containmedia", "creator", "ressources", "media" CASCADE;
 
 -- ---------------------------------------------------------------
 -- Table "theme"
+-- ---------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS "theme" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -14,10 +15,14 @@ CREATE TABLE IF NOT EXISTS "theme" (
   "image" TEXT NULL,
   "theme_presentation" TEXT
   );
+
 -- Données de test
+
   INSERT INTO theme (titletheme, image, theme_presentation) VALUES ('angels', '', 'texte de présentation');
+
 -- -------------------------------------------------------------------
 -- Table "workspace"
+-- ---------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS "workspace" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -26,11 +31,15 @@ CREATE TABLE IF NOT EXISTS "workspace" (
   "owner" TEXT NOT NULL,
   "workspace_presentation" TEXT
 );
+
 -- Données de test
+
 INSERT INTO workspace (titleworkspace, owner, workspace_presentation)
 VALUES ('mes projets en cours', 'ysm', 'texte de présentation');
+
 -- ---------------------------------------------------------------------------
 -- Table "user"
+-- ---------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS "users" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -49,11 +58,15 @@ CREATE TABLE IF NOT EXISTS "users" (
   "titlemedia" INT REFERENCES "workspace" ("id"),
   "titletheme" INT REFERENCES "workspace" ("id")
 );
+
 -- Données de test
+
 INSERT INTO users (username, password, lastname, firstname, adresse, town, zipcode, email, phone, social_network)
 VALUES ('ysm', 'password', 'saint-marc', 'yann', 'nulle part', 'nowhere', '00000', 'yann.nullepart@nowhere.com', '0000000000','facebook');
+
 -- ---------------------------------------------------------------------------
 -- Table "ressources"
+-- ---------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS "ressources" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -61,11 +74,15 @@ CREATE TABLE IF NOT EXISTS "ressources" (
   "type" TEXT NOT NULL,
   "link" TEXT
 );
+
 -- Données de test
+
 INSERT INTO ressources (titleressources, type, link)
 VALUES ('ma ressource', 'photography', 'www.photo.com/ma_photo');
+
 -- ---------------------------------------------------------------------------
 -- Table "media"
+-- ---------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS "media" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -80,40 +97,44 @@ CREATE TABLE IF NOT EXISTS "media" (
   "media_presentation" TEXT,
   "image_media" TEXT NULL
 );
+
 -- Données de test
+
 INSERT INTO media (titlemedia, author, type, material, size_height, size_width, weight, media_presentation, image_media)
 VALUES ('un ange', 'ysm', 'photography', 'tirage numérique sur papier', '30', '30', '10', 'texte de présentation', 'www.photo.com/ma_photo/ange');
--- ----------------------------------------------------------------
--- Table "containtheme"
-
-CREATE TABLE IF NOT EXISTS "containtheme" (
-  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "titleworkspace" INT NOT NULL REFERENCES "workspace" ("id"),
-  "titletheme" INT NOT NULL REFERENCES "theme" ("id")
-  );
-  
--- ----------------------------------------------------------------------
--- Table "containressources"
-
-CREATE TABLE IF NOT EXISTS "containressources" (
-  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "titletheme" INT NOT NULL REFERENCES "theme" ("id"),
-  "titlemedia" INT NOT NULL REFERENCES "media" ("id"),
-  "titleressources" INT NOT NULL REFERENCES "ressources" ("id")
-);
-
--- ---------------------------------------------------------------------------
--- Table "containmedia"
-
-CREATE TABLE IF NOT EXISTS "containmedia" (
-  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "titletheme" INT NOT NULL REFERENCES "theme" ("id"),
-  "titlemedia" INT NOT NULL REFERENCES "media" ("id")
-);
 
 -- ----------------------------------------------------------------------------
--- tables d'association
--- 
+-- tables d'association:
+-- ----------------------------------------------------------------------------
+-- ManyToMany_Theme2Workspace
+-- ----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS "ManyToMany_Theme2Workspace" (
+  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "workspace_id" INT NOT NULL REFERENCES "workspace" ("id") ON DELETE CASCADE,
+  "theme_id" INT NOT NULL REFERENCES "theme" ("id") ON DELETE CASCADE
+  );
+
+-- ----------------------------------------------------------------------------
+-- ManyToMany_Media2Theme
+-- ----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS "ManyToMany_Media2Theme" (
+  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "theme_id" INT NOT NULL REFERENCES "theme" ("id") ON DELETE CASCADE,
+  "media_id" INT NOT NULL REFERENCES "media" ("id") ON DELETE CASCADE
+  );
+
+-- ----------------------------------------------------------------------------
+  -- ManyToMany_Ressources2Media
+-- ----------------------------------------------------------------------------
+
+  CREATE TABLE IF NOT EXISTS "ManyToMany_Ressources2Media" (
+  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "theme_id" INT NOT NULL REFERENCES "theme" ("id") ON DELETE CASCADE,
+  "media_id" INT NOT NULL REFERENCES "media" ("id") ON DELETE CASCADE,
+  "ressources_id" INT NOT NULL REFERENCES "ressources" ("id") ON DELETE CASCADE
+);
 
 -- -----------------------------------------------------------------------------
 COMMIT;
