@@ -1,3 +1,5 @@
+//const bcrypt = require('bcrypt');
+
 const { User } = require('../models');
 
 
@@ -45,7 +47,18 @@ module.exports = {
             if (existingUser) {
                 res.json({Error})
             } else {
-    //const hashedPassword = bcrypt.hashSync(req.body.password, 10);// TODO : terminer cette partie !!! 
+                // compare password to hashed password in BDD
+    const validPassword = bcrypt.copareSync(req.body.password, existingUser);
+                // if is wrong
+    if (!validPassword) {
+        res.render('login');
+    } else {
+                // connect 
+                // keep user connected
+    req.session.user = existingUser;
+    req.redirect('/');
+    }
+    // TODO : terminer cette partie !!! 
             }
 
             const newUserProfile = new User (

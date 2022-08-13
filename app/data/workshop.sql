@@ -2,7 +2,7 @@
 
 BEGIN;
 
-DROP TABLE IF EXISTS "theme", "containtheme", "workspace", "containressources", "containmedia", "creator", "ressources", "media" CASCADE;
+DROP TABLE IF EXISTS "theme", "containtheme", "workspace", "containressources", "containmedia", "users", "ressources", "media" CASCADE;
 
 -- ---------------------------------------------------------------
 -- Table "theme"

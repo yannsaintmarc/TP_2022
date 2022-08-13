@@ -5,7 +5,7 @@
   "main": "app/app.js",
   "scripts": {
     "start": "node app/app.js",
-    "dev": "nodemon app/app.js"
+    "dev": "node-dev app.js"
   },
   "author": "yann saint-marc",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "install": "^0.13.0",
+    "node-dev": "^7.4.3",
     "npm": "^8.14.0",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",

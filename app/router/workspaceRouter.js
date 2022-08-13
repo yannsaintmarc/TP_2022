@@ -8,7 +8,7 @@ const router = express.Router();
 
 // routes:
 //GET
-router.get('/:id', workspaceController.getAllWorkspace;
+router.get('/:id'), workspaceController.getAllWorkspace;
 
 //POST
 router.post('/', workspaceController.createWorkspace);

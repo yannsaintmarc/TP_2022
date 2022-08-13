@@ -1,13 +1,15 @@
 
 require('dotenv').config();
+
 const express = require ('express');
+
 const cors = require('cors');
-//const session =require ('express-session');
+
 const router = require('./router');
 
 const app = express();
 
-app.use(express.static('/public'));
+app.use(express.static('app/public'));
 
 app.use(express.json());
 app.use(cors('*'));
