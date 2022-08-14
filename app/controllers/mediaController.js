@@ -4,7 +4,7 @@ module.exports = {
 
 // GET ALL MEDIAS
 
-    async getAllMedias(req,res) {
+    async getAllMedias(_req,res) {
 
         try {
             const MediasList = await Medias.findAll(

@@ -106,30 +106,30 @@ VALUES ('un ange', 'ysm', 'photography', 'tirage numérique sur papier', '30', '
 -- ----------------------------------------------------------------------------
 -- tables d'association:
 -- ----------------------------------------------------------------------------
--- ManyToMany_Theme2Workspace
+-- CONTAINTHEME
 -- ----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS "ManyToMany_Theme2Workspace" (
+CREATE TABLE IF NOT EXISTS "containtheme" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "workspace_id" INT NOT NULL REFERENCES "workspace" ("id") ON DELETE CASCADE,
   "theme_id" INT NOT NULL REFERENCES "theme" ("id") ON DELETE CASCADE
   );
 
 -- ----------------------------------------------------------------------------
--- ManyToMany_Media2Theme
+-- CONTAINMEDIA
 -- ----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS "ManyToMany_Media2Theme" (
+CREATE TABLE IF NOT EXISTS "containmedia" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "theme_id" INT NOT NULL REFERENCES "theme" ("id") ON DELETE CASCADE,
   "media_id" INT NOT NULL REFERENCES "media" ("id") ON DELETE CASCADE
   );
 
 -- ----------------------------------------------------------------------------
-  -- ManyToMany_Ressources2Media
+  -- CONTAINRESSOURCES
 -- ----------------------------------------------------------------------------
 
-  CREATE TABLE IF NOT EXISTS "ManyToMany_Ressources2Media" (
+  CREATE TABLE IF NOT EXISTS "containressources" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "theme_id" INT NOT NULL REFERENCES "theme" ("id") ON DELETE CASCADE,
   "media_id" INT NOT NULL REFERENCES "media" ("id") ON DELETE CASCADE,
