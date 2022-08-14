@@ -25,17 +25,17 @@ Workspace.hasMany(Themes, {
             as: 'theme'
 });
 
-// creation d'un objet "Theme2Workspace" pour gérer l'association des deux tables "themes" et "workspace"
+// creation d'un objet "containtheme" pour gérer l'association des deux tables "themes" et "workspace"
 
-const Theme2Workspace = sequelize.define('ManyToMany_Theme2Workspace', {}, {
+const containtheme = sequelize.define('containtheme', {}, {
     udatedAt: false,
-    tableName: 'ManyToMany_Theme2Workspace'
+    tableName: 'containtheme'
 })
 
 // un theme dépend d'un ou plusieurs espaces de travail
 
 Themes.belongsToMany(Workspace, {
-    through: Theme2Workspace,
+    through: containtheme,
     foreignKey: 'theme_id',
     otherKey: 'workspace_id',
     as: 'workspace'
@@ -55,17 +55,17 @@ Themes.hasMany(Ressources, {
     as: 'ressources'
 });
 
-// creation d'un objet "Media2Theme" pour gérer l'association des deux tables "media" et "themes"
+// creation d'un objet "containtheme" pour gérer l'association des deux tables "media" et "themes"
 
-const Media2Theme = sequelize.define('ManyToMany_Media2Theme', {}, {
+const containmedia = sequelize.define('containmedia', {}, {
     udatedAt: false,
-    tableName: 'ManyToMany_Media2Theme'
+    tableName: 'containmedia'
 })
 
 //un média est rattaché à un ou plusieurs themes
 
 Medias.belongsToMany(Themes, {
-    through: Media2Theme,
+    through: containmedia,
     foreignKey: 'media_id',
     otherKey: 'theme',
     as: 'theme'
@@ -78,17 +78,17 @@ Medias.hasMany(Ressources, {
     as: 'ressources'
 });
 
-// creation d'un objet "Ressources2Media" pour gérer l'association des deux tables "ressources" et "media"
+// creation d'un objet "containressources" pour gérer l'association des deux tables "ressources" et "media"
 
-const Ressources2Media = sequelize.define('ManyToMany_Ressources2Media', {}, {
+const containressources = sequelize.define('containressources', {}, {
     udatedAt: false,
-    tableName: 'ManyToMany_Ressources2Media'
+    tableName: 'containressources'
 })
 
 // une ressource peut être rattachée à plusieurs médias
 
 Ressources.belongsToMany(Medias, {
-    through: Ressources2Media,
+    through: containressources,
     foreignKey: 'ressources_id',
     otherKey: 'media_id',
     as: 'ressources'
