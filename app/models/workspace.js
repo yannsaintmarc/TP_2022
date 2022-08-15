@@ -12,8 +12,7 @@ Workspace.init (
     },
     {
         sequelize,
-        tableName: 'workspace',
-        tableName: 'theme'
+        tableName: 'workspace'
     }
 );
 

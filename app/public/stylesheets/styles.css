@@ -1,0 +1,17 @@
+.body {
+    background-color:beige ; 
+    
+}
+
+.title {
+    color: brown;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.text {
+    color: rgb(0, 0, 0);
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
