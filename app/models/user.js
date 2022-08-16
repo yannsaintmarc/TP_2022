@@ -1,9 +1,9 @@
 const sequelize = require('../data/database');
 const {DataTypes, Model} = require('sequelize');
 
-class Creator extends Model {
+class User extends Model {
 
-    getCreatorProfile() {
+    getUserProfile() {
         return `${this.firstname}
                 ${this.lastname}
                 ${this.avatar}
@@ -32,7 +32,7 @@ class Creator extends Model {
     }
 }
 
-Creator.init(
+User.init(
     {
         password : DataTypes.TEXT,
         firstname: DataTypes.TEXT,
@@ -49,8 +49,8 @@ Creator.init(
     },
     {
         sequelize,
-        tableName: 'creator'
+        tableName: 'users'
     }
 );
 
-module.exports = Creator;
+module.exports = User;

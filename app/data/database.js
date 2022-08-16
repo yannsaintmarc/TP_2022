@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const {Client} = require ('pg');
+const { Client } = require ('pg');
 const client= new Client;
 
 new Client(
@@ -13,9 +13,9 @@ new Client(
 );
 client.connect((error) => {
         if(error) {
-                console.error("database connexion failed ", error.message);
+                console.error("API connexion failed ", error.message);
         } else {
-                console.log("Connexion to database with success");
+                console.log("Connexion to API");
         }
     }
 );

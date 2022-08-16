@@ -24,5 +24,5 @@ app.set('views', './views');
 
 /** PORT listening */
 app.listen(process.env.PORT || 3000, () => {
-    console.log('Server running on :', process.env.PORT);
+    console.log('Running on :', process.env.PORT);
 });

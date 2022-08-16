@@ -1,6 +1,6 @@
 /** import models */
 
-const Creator= require('./creator');
+const User= require('./user');
 const Workspace = require('./workspace');
 const Themes = require('./themes');
 const Medias = require('./medias');
@@ -10,13 +10,13 @@ const Ressources = require('./ressources');
 
 // un utilisateur peut avoir plusieurs espaces de travail
 Creator.hasMany(Workspace, {
-    foreignKey: 'creator_id',
+    foreignKey: 'user_id',
     as: 'creator'
 });
 
 // un espace de travail n'a qu'un seul utilisateur
-Workspace.belongTo(Creator, {
-        foreignKey: 'creator_id',
+Workspace.belongTo(User, {
+        foreignKey: 'user_id',
         as: 'creator'
 });
 
@@ -64,7 +64,7 @@ Ressources.belongToMany(Medias, {
 
 
 module.exports = {
-Creator,
+User,
 Workspace,
 Themes,
 Medias,

@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 //const emailValidator = require('email-validator');
 
-const { Creator } = require ('../models/creator');
+const { User } = require ('../models/user');
 
 const authController = {
     
@@ -95,7 +95,7 @@ const authController = {
 
  /** create new Creator and save into database */
 
-        const newCreator = new Creator({
+        const newCreator = new User({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             adress: req.body.adress,
@@ -107,7 +107,7 @@ const authController = {
             userName: req.body.userName,
             password: req.body.password
         });
-        await newCreator.save();
+        await newUser.save();
         res.redirect('/');
 
             }

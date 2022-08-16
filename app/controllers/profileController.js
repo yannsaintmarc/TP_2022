@@ -1,10 +1,10 @@
-const { Creator } = require('../models/creator');
+const { Creator } = require('../models/user');
 const { Errors } = require('../models/error');
 
 const profileController= {
-    getCreatorProfile: async (req,res) => {
+    getUserProfile: async (req,res) => {
         try{
-            const ShowCreatorProfile = await ShowCreatorProfile.findAll(
+            const ShowCreatorProfile = await ShowUserProfile.findAll(
             {
                   include:
                 [
@@ -22,7 +22,7 @@ const profileController= {
 
         );
  
-            res.render('creatorProfile', {data: Creator});
+            res.render('userProfile', {data: User});
  
      } catch (error) {
  console.logerror(error);
